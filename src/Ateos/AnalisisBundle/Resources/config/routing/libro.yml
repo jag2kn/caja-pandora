@@ -1,0 +1,30 @@
+libro:
+    pattern:  /
+    defaults: { _controller: "AteosAnalisisBundle:Libro:index" }
+
+libro_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AteosAnalisisBundle:Libro:show" }
+
+libro_new:
+    pattern:  /new
+    defaults: { _controller: "AteosAnalisisBundle:Libro:new" }
+
+libro_create:
+    pattern:  /create
+    defaults: { _controller: "AteosAnalisisBundle:Libro:create" }
+    requirements: { _method: post }
+
+libro_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AteosAnalisisBundle:Libro:edit" }
+
+libro_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AteosAnalisisBundle:Libro:update" }
+    requirements: { _method: post|put }
+
+libro_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AteosAnalisisBundle:Libro:delete" }
+    requirements: { _method: post|delete }

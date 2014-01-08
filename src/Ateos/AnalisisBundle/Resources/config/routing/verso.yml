@@ -1,0 +1,35 @@
+verso2:
+    pattern:  /{pagina}
+    defaults: { _controller: "AteosAnalisisBundle:Verso:index" , pagina:0}
+
+verso:
+    pattern:  /
+    defaults: { _controller: "AteosAnalisisBundle:Verso:index" , pagina:0}
+
+
+verso_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AteosAnalisisBundle:Verso:show" }
+
+verso_new:
+    pattern:  /new
+    defaults: { _controller: "AteosAnalisisBundle:Verso:new" }
+
+verso_create:
+    pattern:  /create
+    defaults: { _controller: "AteosAnalisisBundle:Verso:create" }
+    requirements: { _method: post }
+
+verso_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AteosAnalisisBundle:Verso:edit" }
+
+verso_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AteosAnalisisBundle:Verso:update" }
+    requirements: { _method: post|put }
+
+verso_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AteosAnalisisBundle:Verso:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Lista de versos</h1>
+
+
+{% if paginaAnterior>0 %}
+<a href="{{ path('verso2', { 'pagina': paginaAnterior }) }}">Anterior pagina</a> - 
+{% endif %}
+<a href="{{ path('verso2', { 'pagina': paginaSiguiente }) }}">Siguiente pagina</a><br>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libro</th>
+                <th>Capitulo</th>
+                <th>Verso</th>
+                <th>Texto</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('verso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.libro.nombre }}</td>
+                <td>{{ entity.capitulo }}</td>
+                <td>{{ entity.verso }}</td>
+                <td>{{ entity.texto }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('verso_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('verso_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('verso_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

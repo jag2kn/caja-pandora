@@ -1,0 +1,7 @@
+parameters:
+#    ateos_analisis.example.class: Ateos\AnalisisBundle\Example
+
+services:
+#    ateos_analisis.example:
+#        class: %ateos_analisis.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

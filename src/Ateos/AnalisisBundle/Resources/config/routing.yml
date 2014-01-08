@@ -1,0 +1,14 @@
+ateos_analisis_homepage:
+    pattern:  /
+    defaults: { _controller: AteosAnalisisBundle:Default:index }
+
+
+AteosAnalisisBundle_verso:
+    resource: "@AteosAnalisisBundle/Resources/config/routing/verso.yml"
+    prefix:   /verso
+
+
+AteosAnalisisBundle_libro:
+    resource: "@AteosAnalisisBundle/Resources/config/routing/libro.yml"
+    prefix:   /libro
+
