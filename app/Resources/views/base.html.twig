@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Analisis Biblico - Ateos Bogotá{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <link href="{{ asset('bundles/ateosanalisis/css/bootstrap.min.css') }}" rel="stylesheet" />
+        
+                <script src="{{ asset('bundles/ateosanalisis/js/jquery.js') }}"></script>
+                <script src="{{ asset('bundles/ateosanalisis/js/bootstrap.min.js') }}"></script>
+                <style>        
+                table {
+                                background-color: rgba(0, 0, 0, 0);
+                                border-collapse: collapse;
+                                border-spacing: 0;
+                                max-width: 100%;
+                        }
+                table thead{
+                        background-color: #82bdf3;
+                }
+                table th{
+                        padding: 10px 15px;
+                        border: 1px solid gray;
+                }
+                
+                table td {
+                        border: 1px solid gray;
+                        padding: 10px 15px;
+                }
+        </style>
+    </head>
+    <body>
+
+<div class="container">
+{#
+            {% if app.user %}
+                 Bienvenido: {{ app.user.username }} - <a href="{{ path('logout')}}">Salir</a>
+                 <hr>
+                 
+            {% else %}
+                    
+            {% endif %}
+#}  
+<h1>Analisis Biblico</h1>
+
+        {% block body %}{% endblock %}
+
+
+<hr/>
+<div class="container">
+Ateos de Bogotá<br>
+</div>
+
+        {% block javascripts %}{% endblock %}
+        
+    </body>
+</html>

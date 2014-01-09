@@ -1,0 +1,4 @@
+ateos_analisis:
+    resource: "@AteosAnalisisBundle/Resources/config/routing.yml"
+    prefix:   /
+
