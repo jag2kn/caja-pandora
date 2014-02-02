@@ -7,9 +7,13 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
         <link href="{{ asset('bundles/ateosanalisis/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('bundles/ateosanalisis/css/font-awesome.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('bundles/ateosanalisis/css/alertify.core.css') }}" rel="stylesheet" />
+        <link href="{{ asset('bundles/ateosanalisis/css/alertify.bootstrap.css') }}" rel="stylesheet" />
         
                 <script src="{{ asset('bundles/ateosanalisis/js/jquery.js') }}"></script>
                 <script src="{{ asset('bundles/ateosanalisis/js/bootstrap.min.js') }}"></script>
+                <script src="{{ asset('bundles/ateosanalisis/js/alertify.min.js') }}"></script>
                 <style>        
                 table {
                                 background-color: rgba(0, 0, 0, 0);
@@ -28,6 +32,9 @@
                 table td {
                         border: 1px solid gray;
                         padding: 10px 15px;
+                }   
+                .alertify-text{
+                	height: 40px;
                 }
         </style>
     </head>
@@ -52,8 +59,8 @@
 <div class="container">
 Ateos de Bogotá<br>
 </div>
-
+<script>
         {% block javascripts %}{% endblock %}
-        
+</script>
     </body>
 </html>

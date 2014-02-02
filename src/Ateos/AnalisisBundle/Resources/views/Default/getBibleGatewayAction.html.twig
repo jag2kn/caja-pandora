@@ -1,0 +1,13 @@
+
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+
+	<table><thead><tr><th>Lista de versiones</th></tr></thead><tbody>
+	{% for version in versiones %}
+		<tr><td><a href="{{path('ateos_analisis_versiones', {'id':version.id}) }}">{{ version.nombre }}</a></td></tr>
+	{% endfor %}
+	</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,121 @@
+
+{% extends '::base.html.twig' %}
+
+
+{% block javascripts %}
+
+function botonAgregar(id, link){
+	x=
+		'<button id="agregar_'+id+'" type="button" class="btn btn-default">'+
+			'<span class="fa fa-plus"></span>'+
+		'</button> ';
+	return x;
+}
+
+function cuantosComentarios(id, cuantos){
+	x= 	
+		'<button id="verComenarios_'+id+'" type="button" class="btn btn-default">'+
+			'<span class="fa fa-comment">'+cuantos+'</span>'+
+		'</button> ';
+			
+	return x;
+}
+
+function verComenarios(id){
+	$.getJSON( "{{path('url_servicio_comentarios')}}"+id, function( data ) {
+		comentarios="";
+		$.each( data, function( key, val ) {
+			comentarios += '<div><span class="fa fa-comment">'+val.autor+': '+val.comentario+'</span></div>';
+		});
+		alertify.alert(comentarios); 
+	});
+}
+
+function agregarComenario(id){
+	alertify.prompt("Agregando comentario:", function (e, comentario) {
+		if (e){
+			alertify.prompt("Cual es tu nombre:", function (e2, autor) {
+				if (!e){
+					  autor = "anonimo";
+				}
+				$.post("{{path('servicio_agregarComentario')}}", {"id":id, "comentario":comentario, "autor":autor}, function(data, textStatus) {
+					//data contains the JSON object
+					//textStatus contains the status: success, error, etc
+					if (textStatus=="success"){
+						if(data.resultado=="ok"){
+							alertify.success("Comentario almacenado"); 
+							cambioCapitulo($("#capitulo").val());
+						}else{
+							alertify.error("Error al almacenar comentario."); 
+						}
+					}else{
+						alertify.error("Error al almacenar comentario..");
+					}
+				}, "json");
+				
+			});
+		}
+	});
+}
+
+function cambioCapitulo(capitulo){
+		$("#versos").empty();
+		$.getJSON( "{{path('url_servicio_versos')}}"+$("#libros").val()+"/"+capitulo+"/"+capitulo, function( data ) {
+			$("#versos").empty();
+			$.each( data, function( key, val ) {
+				
+				$("#versos").append( "<div value='" + key + "'>"+botonAgregar(""+key, "")+cuantosComentarios(key, val.comentarios)+"<span>"+key+" - </span> " + val.texto + "</div>" );
+				$("#agregar_"+key).click(function(){
+					agregarComenario($(this).attr("id").split("_")[1]);
+				});
+				$("#verComenarios_"+key).click(function(){
+					verComenarios($(this).attr("id").split("_")[1]);
+				});
+			});
+		});
+	
+}
+
+$(function(){
+	$.getJSON( "{{path('servicio_libros')}}", function( data ) {
+		$("#libros").empty();
+		$("#libros").append( "<option value='-1'>Seleccione</option>" );
+		$.each( data, function( key, val ) {
+			$("#libros").append( "<option value='" + key + "'>" + val + "</option>" );
+		});
+		$("#capitulo").empty();
+	});
+	
+	$("#libros").change(function() {
+		$("#capitulo").append( "<option value='-1'>Cargando ...</option>" );
+		$.getJSON( "{{path('url_servicio_capitulos')}}"+this.value, function( data ) {
+			$("#capitulo").empty();
+			$("#capitulo").append( "<option value='-1'>Seleccione</option>" );
+			$.each( data, function( key, val ) {
+				$("#capitulo").append( "<option value='" + key + "'>" + val + "</option>" );
+			});
+		});
+		
+	});
+
+	$("#capitulo").change(function() {
+		cambioCapitulo(this.value);
+	});
+
+	
+});
+
+{% endblock %}
+
+
+
+{% block body -%}
+
+<h2>{{version.nombre}}</h2>
+
+Libro: <select id="libros"><option>Cargando ....</option></select>
+Capitulo: <select id="capitulo"><option>Cargando ....</option></select>
+Capitulo: <div id="versos"></div>
+	
+
+{% endblock %}

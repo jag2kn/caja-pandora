@@ -22,6 +22,13 @@ class Verso
     private $id;
     
 	/**
+	* @ORM\ManyToOne(targetEntity="Version")
+	* @ORM\JoinColumn(name="version_id", referencedColumnName="id")
+	*/
+	protected $version;
+	
+	
+	/**
 	* @ORM\ManyToOne(targetEntity="Libro")
 	* @ORM\JoinColumn(name="book_id", referencedColumnName="id")
 	*/
@@ -148,5 +155,28 @@ class Verso
     public function getLibro()
     {
         return $this->libro;
+    }
+
+    /**
+     * Set version
+     *
+     * @param \Ateos\AnalisisBundle\Entity\Version $version
+     * @return Verso
+     */
+    public function setVersion(\Ateos\AnalisisBundle\Entity\Version $version = null)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return \Ateos\AnalisisBundle\Entity\Version 
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 }

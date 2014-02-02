@@ -3,6 +3,15 @@ ateos_analisis_homepage:
     defaults: { _controller: AteosAnalisisBundle:Default:index }
 
 
+ateos_analisis_getBibleGateway:
+    pattern:  /versiones
+    defaults: { _controller: AteosAnalisisBundle:Default:getBibleGateway }
+
+ateos_analisis_versiones:
+    pattern:  /versiones/{id}
+    defaults: { _controller: AteosAnalisisBundle:Default:versiones }
+
+
 AteosAnalisisBundle_verso:
     resource: "@AteosAnalisisBundle/Resources/config/routing/verso.yml"
     prefix:   /verso
@@ -11,4 +20,42 @@ AteosAnalisisBundle_verso:
 AteosAnalisisBundle_libro:
     resource: "@AteosAnalisisBundle/Resources/config/routing/libro.yml"
     prefix:   /libro
+
+
+
+
+
+servicio_libros:
+    pattern:  /servicio/libros
+    defaults: { _controller: AteosAnalisisBundle:Servicios:libros }
+
+url_servicio_capitulos:
+    pattern:  /servicio/capitulos/
+
+servicio_capitulos:
+    pattern:  /servicio/capitulos/{libro}
+    defaults: { _controller: AteosAnalisisBundle:Servicios:capitulos }
+
+url_servicio_versos:
+    pattern:  /servicio/versos/
+
+servicio_versos:
+    pattern:  /servicio/versos/{idLibro}/{capituloDesde}/{capituloHasta}
+    defaults: { _controller: AteosAnalisisBundle:Servicios:versos }
+
+
+servicio_agregarComentario:
+    pattern:  /servicio/agregarComentario
+    defaults: { _controller: AteosAnalisisBundle:Servicios:agregarComentario }
+
+
+
+url_servicio_comentarios:
+    pattern:  /servicio/comentarios/
+
+servicio_comentarios:
+    pattern:  /servicio/comentarios/{idVerso}
+    defaults: { _controller: AteosAnalisisBundle:Servicios:comentarios }
+
+
 
