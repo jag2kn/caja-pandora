@@ -34,8 +34,43 @@
                         padding: 10px 15px;
                 }   
                 .alertify-text{
-                	height: 40px;
+                	height: 40px !important;
                 }
+
+				.contenedorComentarios{
+					border: 1px solid gray;
+					border-radius: 4px;
+					margin: 20px 0;
+				}
+
+				.titulo{
+					color: #AAAAAA;
+					text-transform: uppercase;
+					font-size: 12px;
+					font-weight: 700;
+					left: 15px;
+					top: 15px;
+				}
+
+
+				.texto{
+					background-color: #F5F5F5;
+					border: 1px solid #CCCCCC;
+					border-radius: 4px;
+					color: #333333;
+					font-size: 13px;
+					margin: 0 0 10px;
+					padding: 9.5px;
+					margin: 5px;
+					font-style: italic;
+				}
+
+				.comentario{
+					border: 1px solid gray;
+					margin: 20px;
+					padding: 20px;
+
+				}                
         </style>
     </head>
     <body>
@@ -51,6 +86,7 @@
             {% endif %}
 #}  
 <h1>Analisis Biblico</h1>
+<a href="{{path('ateos_analisis_homepage')}}">Inicio</a>
 
         {% block body %}{% endblock %}
 

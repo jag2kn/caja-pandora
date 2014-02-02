@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+
+{% block javascripts %}
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block body -%}
+
+<h2>Comentarios</h2>
+
+
+{% for comentario in comentarios %}
+
+	<div class="contenedorComentarios">
+		<div class="titulo">{{ comentario.versoDesde.libro.nombre }}
+			{{ comentario.versoDesde.capitulo }}
+			{{ comentario.versoDesde.verso }}
+		</div>
+		<div class="texto">{{ comentario.versoDesde.texto }}</div>
+		<div class="comentario"><strong>{{ comentario.autor}}</strong>: {{ comentario.comentario}}</div>
+	</div>
+	
+{% endfor %}
+
+	
+
+{% endblock %}
+
+

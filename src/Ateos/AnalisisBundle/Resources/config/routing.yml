@@ -57,5 +57,7 @@ servicio_comentarios:
     pattern:  /servicio/comentarios/{idVerso}
     defaults: { _controller: AteosAnalisisBundle:Servicios:comentarios }
 
-
+ver_comentarios:
+    pattern:  /comentarios
+    defaults: { _controller: AteosAnalisisBundle:Default:comentarios }
 

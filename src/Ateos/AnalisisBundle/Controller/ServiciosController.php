@@ -96,11 +96,17 @@ class ServiciosController extends Controller
 	    
 	    $comentarios = $em->getRepository('AteosAnalisisBundle:Comentario')->findBy(array("versoDesde"=>$verso));
 	    
-		$respuesta=array();
+		$respuesta=array(
+				"titulo" => $verso->getLibro()->getNombre()." ".
+							$verso->getCapitulo()." ".
+							$verso->getVerso(),
+				"texto" => $verso->getTexto(),
+				"comentarios"=>array()
+		);
 		foreach($comentarios as $comentario){
-			$respuesta[$comentario->getId()]=array(
-				"autor"=>$comentario->getAutor(),
-				"comentario"=>$comentario->getComentario(),
+			$respuesta["comentarios"][$comentario->getId()]=array(
+				"autor" => $comentario->getAutor(),
+				"comentario" => $comentario->getComentario(),
 			);
 		}
 

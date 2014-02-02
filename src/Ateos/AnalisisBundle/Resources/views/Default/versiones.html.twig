@@ -23,10 +23,18 @@ function cuantosComentarios(id, cuantos){
 
 function verComenarios(id){
 	$.getJSON( "{{path('url_servicio_comentarios')}}"+id, function( data ) {
-		comentarios="";
-		$.each( data, function( key, val ) {
-			comentarios += '<div><span class="fa fa-comment">'+val.autor+': '+val.comentario+'</span></div>';
+		comentarios=
+				'<div class="contenedorComentarios">'+
+					'<div class="titulo">'+data.titulo+''+
+					'</div>'+
+					'<div class="texto">'+data.texto+'</div>';
+
+		$.each( data.comentarios, function( key, val ) {
+			comentarios += 
+					'<div class="comentario"><strong>'+val.autor+'</strong>: '+val.comentario+'</div>';
 		});
+		comentarios += 
+			'</div>';
 		alertify.alert(comentarios); 
 	});
 }

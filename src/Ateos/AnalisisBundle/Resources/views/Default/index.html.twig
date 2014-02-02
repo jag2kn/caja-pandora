@@ -3,8 +3,14 @@
 
 {% block body -%}
 
+<h3>Comentar</h3>
+<ul>
+	<li><a href="{{ path('ateos_analisis_versiones', {id:0}) }}">Comentar versiculos</a></li>
+	<li><a href="{{ path('ver_comentarios') }}">Ver comentarios</a></li>
+</ul>
 
 
+<h3>Administración</h3>
 <ul>
 	<li><a href="{{ path('libro') }}">Administración Libros</a></li>
 	<li><a href="{{ path('verso') }}">Administración Versos</a></li>
