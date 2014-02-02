@@ -7,26 +7,32 @@ Software para analisis de libros de textos
 Instalación
 ===========
 
-# Clonar el proyecto: 
-git clone https://github.com/jag2kn/caja-pandora.git
+Clonar el proyecto:
 
-# Entrar en el directorio
-cd caja-pandora
+    git clone https://github.com/jag2kn/caja-pandora.git
 
-# Descargar composer.phar
-curl -sS https://getcomposer.org/installer | php
+Entrar en el directorio
 
-# Instalar dependencias
-php composer.phar update
+    cd caja-pandora
 
+Crear la base de datos
 
-# Crear la base de datos
-mysql -u root -p -e "create database analisisateo;"
+    mysql -u root -p -e "create database analisisateo;"
 
-# Cargar la base de datos
-mysql -u root -p analisisateo < analisis_biblico.sql
+Cargar la base de datos
 
-# Correr servidor de desarrollo
-php app/console server:run
+    mysql -u root -p analisisateo < analisis_biblico.sql
+
+Descargar composer.phar
+
+    curl -sS https://getcomposer.org/installer | php
+
+Instalar dependencias
+
+    php composer.phar update
+
+Correr servidor de desarrollo
+
+    php app/console server:run
 
 
